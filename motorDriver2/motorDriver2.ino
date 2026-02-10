@@ -30,15 +30,19 @@ void loop() {
   Serial.println(distance);
 
 
-  if (distance >= 20) {
-    digitalWrite(AA, HIGH);
-    digitalWrite(AB, LOW);
-    
-  } else {
-    digitalWrite(AA, LOW);
-    digitalWrite(AB, LOW);
-    
-  }
+ if (distance > 25) {
+  analogWrite(AA, 200);  // 빠르게
+  digitalWrite(AB, LOW);
+}
+else if (distance > 15) {
+  analogWrite(AA, 100);  // 천천히
+  digitalWrite(AB, LOW);
+}
+else {
+  analogWrite(AA, 0);    // 정지
+  digitalWrite(AB, LOW);
+}
+
 
   if (distance == 0) return;
   delay(500);
